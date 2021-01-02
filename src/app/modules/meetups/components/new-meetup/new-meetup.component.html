@@ -1,6 +1,4 @@
 <div class="container-fluid">
-
-
     <!-- Vertical Steppers -->
     <div class="row mt-5 justify-content-center no-gutters">
         <div class="col-xl-8">
@@ -40,12 +38,7 @@
 
                             <div class="md-form">
                                 <input formControlName="title" mdbInput type="text" id="titleId" class="form-control">
-                                <label for="titleId">Nombre del evento</label>
-                            </div>
-
-                            <div class="md-form">
-                                <input formControlName="title" mdbInput type="text" id="titleId" class="form-control">
-                                <label for="titleId">Organizador</label>
+                                <label for="titleId">Lugar</label>
                             </div>
                         </mdb-card-body>
                     </mdb-card>
@@ -56,36 +49,44 @@
                     <mdb-card>
                         <mdb-card-body>
                             <mdb-card-title>
-                                <h3 class="h3-responsive">Fecha y hora</h3>
-                                <p>Informale a los participantes cuándo empieza y termina el evento para que puedan
+                                <h3 class="h3-responsive">Fecha</h3>
+                                <p>Informale a los participantes cuándo empieza el evento para que puedan
                                     organizarse.
                                 </p>
                             </mdb-card-title>
 
-                            <div class="md-form">
-                                <input formControlName="title" mdbInput type="text" id="titleId" class="form-control">
-                                <label for="titleId">Nombre del evento</label>
-                            </div>
+                            <mat-form-field>
+                                <mat-label>Fecha</mat-label>
+                                <input matInput [matDatepicker]="picker">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
 
                         </mdb-card-body>
                     </mdb-card>
                 </div>
 
                 <!-- Description -->
-                <div class="col-12 mt-4">
+                <div class="col-12 my-4">
                     <mdb-card>
                         <mdb-card-body>
                             <mdb-card-title>
-                                <h4 class="h4-responsive">¿Querés agregar una descripción?</h4>
+                                <h3 class="h3-responsive">Descripción</h3>
                                 <p>
                                     Agregá más información sobre el evento, como la agenda, nombrá a los sponsors o
                                     invitados especiales.
                                 </p>
                             </mdb-card-title>
+
+                            <div class="md-form">
+                                <input formControlName="title" mdbInput type="text" id="titleId" class="form-control">
+                                <label for="titleId">Descripcion</label>
+                            </div>
+
                             <div class="md-form">
                                 <textarea type="text" formControlName="description" id="descriptionID"
                                     class="form-control md-textarea" mdbInput></textarea>
-                                <label for="descriptionID">Descripcion</label>
+                                <label for="descriptionID">Acerca de esta meetup</label>
                             </div>
                         </mdb-card-body>
                     </mdb-card>
@@ -94,27 +95,29 @@
         </div>
 
 
-        <!-- ACTIONS -->
-        <div class="col-xl-8 text-right my-3">
-            <!--       <div *ngIf="progress" class="progress form-group">
-                            <div class="progress-bar progress-bar-striped bg-success mt-4" role="progressbar"
-                                [style.width.%]="progress">
-                            </div>
-                            </div> -->
-
+        <!-- ACTIONS DESKTOP -->
+        <div class="col-xl-8 text-right d-none d-lg-block mb-5">
             <button mdbBtn type="button" color="deep-orange" class="font-weight-bold white-text" outline="true"
-                size="md" mdbWavesEffect>Cancelar meetup</button>
+                size="md" mdbWavesEffect>Cancelar</button>
 
             <button size="md" mdbBtn type="submit" mdbWavesEffect
                 class="waves-light font-weight-bold deep-orange white-text">
-                Publicar meetup
+                Publicar
             </button>
-
-            <!-- <button *ngIf="creating" class="float-right font-weight-bold" mdbBtn size="md" color="primary"
-                type="button" disabled>
-                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                Publicando
-            </button> -->
         </div>
+
+        <!-- ACTIONS MOBILE -->
+        <footer class="page-footer font-small white fixed-bottom z-depth-top d-block d-lg-none">
+            <div class="text-center py-2">
+                <button mdbBtn type="button" color="deep-orange" class="font-weight-bold white-text" outline="true"
+                    size="md" mdbWavesEffect>Cancelar</button>
+    
+                <button size="md" mdbBtn type="submit" mdbWavesEffect
+                    class="waves-light font-weight-bold deep-orange white-text">
+                    Publicar
+                </button>
+            </div>
+
+        </footer>
     </div>
 </div>

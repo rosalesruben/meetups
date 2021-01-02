@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { HeaderComponent } from './general/header/header.component';
 import { GeneralModule } from './general/general.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,6 +15,7 @@ import { GeneralModule } from './general/general.module';
     AppRoutingModule,
     MDBBootstrapModule.forRoot(),
     GeneralModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

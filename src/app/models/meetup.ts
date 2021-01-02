@@ -1,8 +1,8 @@
 export class Meetup {
   id: string;
   title: string;
-  subtitle: string;
   description: string;
+  aboutMeetup: string;
   date: Date;
   organizer: string;
   location: string;
@@ -10,16 +10,16 @@ export class Meetup {
 
   constructor(
     title: string,
-    subtitle: string,
     description: string,
+    aboutMeetup: string,
     date: Date,
     organizer: string,
     location: string,
     id?: string,
   ) {
     this.title = title;
-    this.subtitle = subtitle;
     this.description = description;
+    this.aboutMeetup = aboutMeetup;
     this.date = date;
     this.organizer = organizer;
     this.location = location;
