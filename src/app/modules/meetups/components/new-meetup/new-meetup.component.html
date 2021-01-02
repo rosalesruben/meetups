@@ -1,0 +1,120 @@
+<div class="container-fluid">
+
+
+    <!-- Vertical Steppers -->
+    <div class="row mt-5 justify-content-center no-gutters">
+        <div class="col-xl-8">
+            <div class="row">
+                <!-- Basic info -->
+                <div class="col-12">
+                    <mdb-card>
+                        <mdb-card-body>
+                            <mdb-card-title>
+                                <h3 class="h3-responsive">Información básica</h3>
+                                <p>Elegí un nombre para tu evento y contale a los participantes por qué creés que la van
+                                    a pasar genial.</p>
+                            </mdb-card-title>
+
+                            <div class="md-form">
+                                <input formControlName="title" mdbInput type="text" id="titleId" class="form-control">
+                                <label for="titleId">Nombre del evento</label>
+                            </div>
+
+                            <div class="md-form">
+                                <input formControlName="title" mdbInput type="text" id="titleId" class="form-control">
+                                <label for="titleId">Organizador</label>
+                            </div>
+                        </mdb-card-body>
+                    </mdb-card>
+                </div>
+
+                <!-- Location -->
+                <div class="col-12 mt-4">
+                    <mdb-card>
+                        <mdb-card-body>
+                            <mdb-card-title>
+                                <h3 class="h3-responsive">Ubicación</h3>
+                                <p>Ayudá a localizar tu evento y asegurate de que los participantes sepan a dónde ir.
+                                </p>
+                            </mdb-card-title>
+
+                            <div class="md-form">
+                                <input formControlName="title" mdbInput type="text" id="titleId" class="form-control">
+                                <label for="titleId">Nombre del evento</label>
+                            </div>
+
+                            <div class="md-form">
+                                <input formControlName="title" mdbInput type="text" id="titleId" class="form-control">
+                                <label for="titleId">Organizador</label>
+                            </div>
+                        </mdb-card-body>
+                    </mdb-card>
+                </div>
+
+                <!-- Fecha y hora -->
+                <div class="col-12 mt-4">
+                    <mdb-card>
+                        <mdb-card-body>
+                            <mdb-card-title>
+                                <h3 class="h3-responsive">Fecha y hora</h3>
+                                <p>Informale a los participantes cuándo empieza y termina el evento para que puedan
+                                    organizarse.
+                                </p>
+                            </mdb-card-title>
+
+                            <div class="md-form">
+                                <input formControlName="title" mdbInput type="text" id="titleId" class="form-control">
+                                <label for="titleId">Nombre del evento</label>
+                            </div>
+
+                        </mdb-card-body>
+                    </mdb-card>
+                </div>
+
+                <!-- Description -->
+                <div class="col-12 mt-4">
+                    <mdb-card>
+                        <mdb-card-body>
+                            <mdb-card-title>
+                                <h4 class="h4-responsive">¿Querés agregar una descripción?</h4>
+                                <p>
+                                    Agregá más información sobre el evento, como la agenda, nombrá a los sponsors o
+                                    invitados especiales.
+                                </p>
+                            </mdb-card-title>
+                            <div class="md-form">
+                                <textarea type="text" formControlName="description" id="descriptionID"
+                                    class="form-control md-textarea" mdbInput></textarea>
+                                <label for="descriptionID">Descripcion</label>
+                            </div>
+                        </mdb-card-body>
+                    </mdb-card>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ACTIONS -->
+        <div class="col-xl-8 text-right my-3">
+            <!--       <div *ngIf="progress" class="progress form-group">
+                            <div class="progress-bar progress-bar-striped bg-success mt-4" role="progressbar"
+                                [style.width.%]="progress">
+                            </div>
+                            </div> -->
+
+            <button mdbBtn type="button" color="deep-orange" class="font-weight-bold white-text" outline="true"
+                size="md" mdbWavesEffect>Cancelar meetup</button>
+
+            <button size="md" mdbBtn type="submit" mdbWavesEffect
+                class="waves-light font-weight-bold deep-orange white-text">
+                Publicar meetup
+            </button>
+
+            <!-- <button *ngIf="creating" class="float-right font-weight-bold" mdbBtn size="md" color="primary"
+                type="button" disabled>
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Publicando
+            </button> -->
+        </div>
+    </div>
+</div>

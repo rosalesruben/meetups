@@ -1,0 +1,21 @@
+<mdb-card>
+    <div class="view rgba-white-slight waves-light" mdbWavesEffect routerLink="{{meetup.id}}">
+        <!-- Card img -->
+        <mdb-card-img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(97).jpg" alt="Card image cap"></mdb-card-img>
+        <a>
+          <div class="mask"></div>
+        </a>
+      </div>
+    <!--Card image-->
+    <!--Card content-->
+    <mdb-card-body>
+
+        <p>{{meetup.date | date}}</p>
+        <!--Title-->
+        <mdb-card-title>
+            <h4>{{meetup.title}}</h4>
+        </mdb-card-title>
+
+        <!--<a href="#" mdbBtn color="primary" mdbWavesEffect>Button</a> -->
+    </mdb-card-body>
+</mdb-card>
