@@ -1,21 +1,37 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { MeetupService } from '../../services/meetup.service';
 
 @Component({
   selector: 'app-new-meetup',
   templateUrl: './new-meetup.component.html',
-  styleUrls: ['./new-meetup.component.scss']
+  styleUrls: ['./new-meetup.component.scss'],
 })
 export class NewMeetupComponent implements OnInit {
-  steps: boolean[];
+  newMeetupForm: FormGroup;
 
-  constructor() { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private meetupService: MeetupService
+  ) {
+    this.newMeetupForm = this.formBuilder.group({
+      title: '',
+      description: '',
+      aboutMeetup: '',
+      date: '',
+      organizer: '',
+      location: '',
+    });
+  }
 
   ngOnInit(): void {
-    this.steps = [true, false, false, false]
+    // this.newMeetupForm.valueChanges.subscribe((values) => console.log(values));
   }
 
-  showStep(stepNumber: number){
-    this.steps[stepNumber] = true;
+  publishMeetup() {
+    console.log(this.newMeetupForm.value);
+    this.meetupService
+      .create(this.newMeetupForm.value)
+      .subscribe((response) => console.log(response));
   }
-
 }

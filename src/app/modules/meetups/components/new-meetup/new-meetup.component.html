@@ -1,123 +1,132 @@
-<div class="container-fluid">
-    <!-- Vertical Steppers -->
-    <div class="row mt-5 justify-content-center no-gutters">
-        <div class="col-xl-8">
-            <div class="row">
-                <!-- Basic info -->
-                <div class="col-12">
-                    <mdb-card>
-                        <mdb-card-body>
-                            <mdb-card-title>
-                                <h3 class="h3-responsive">Información básica</h3>
-                                <p>Elegí un nombre para tu evento y contale a los participantes por qué creés que la van
-                                    a pasar genial.</p>
-                            </mdb-card-title>
+<form [formGroup]="newMeetupForm" (ngSubmit)="publishMeetup()">
+    <div class="container-fluid">
+        <!-- Vertical Steppers -->
+        <div class="row mt-5 justify-content-center no-gutters">
+            <div class="col-xl-8">
+                <div class="row">
+                    <!-- Basic info -->
+                    <div class="col-12">
+                        <mdb-card>
+                            <mdb-card-body>
+                                <mdb-card-title>
+                                    <h3 class="h3-responsive">Información básica</h3>
+                                    <p>Elegí un nombre para tu evento y contale a los participantes por qué creés que la
+                                        van
+                                        a pasar genial.</p>
+                                </mdb-card-title>
 
-                            <div class="md-form">
-                                <input formControlName="title" mdbInput type="text" id="titleId" class="form-control">
-                                <label for="titleId">Nombre del evento</label>
-                            </div>
+                                <div class="md-form">
+                                    <input formControlName="title" mdbInput type="text" id="titleId"
+                                        class="form-control">
+                                    <label for="titleId">Nombre del evento</label>
+                                </div>
 
-                            <div class="md-form">
-                                <input formControlName="title" mdbInput type="text" id="titleId" class="form-control">
-                                <label for="titleId">Organizador</label>
-                            </div>
-                        </mdb-card-body>
-                    </mdb-card>
-                </div>
+                                <div class="md-form">
+                                    <input formControlName="organizer" mdbInput type="text" id="organizerId"
+                                        class="form-control">
+                                    <label for="organizerId">Organizador</label>
+                                </div>
+                            </mdb-card-body>
+                        </mdb-card>
+                    </div>
 
-                <!-- Location -->
-                <div class="col-12 mt-4">
-                    <mdb-card>
-                        <mdb-card-body>
-                            <mdb-card-title>
-                                <h3 class="h3-responsive">Ubicación</h3>
-                                <p>Ayudá a localizar tu evento y asegurate de que los participantes sepan a dónde ir.
-                                </p>
-                            </mdb-card-title>
+                    <!-- Location -->
+                    <div class="col-12 col-lg-6 mt-4">
+                        <mdb-card>
+                            <mdb-card-body>
+                                <mdb-card-title>
+                                    <h3 class="h3-responsive">Ubicación</h3>
+                                    <p>Ayudá a localizar tu evento y asegurate de que los participantes sepan a dónde
+                                        ir.
+                                    </p>
+                                </mdb-card-title>
 
-                            <div class="md-form">
-                                <input formControlName="title" mdbInput type="text" id="titleId" class="form-control">
-                                <label for="titleId">Lugar</label>
-                            </div>
-                        </mdb-card-body>
-                    </mdb-card>
-                </div>
+                                <div class="md-form">
+                                    <input formControlName="location" mdbInput type="text" id="locationId"
+                                        class="form-control">
+                                    <label for="locationId">Lugar</label>
+                                </div>
+                            </mdb-card-body>
+                        </mdb-card>
+                    </div>
 
-                <!-- Fecha y hora -->
-                <div class="col-12 mt-4">
-                    <mdb-card>
-                        <mdb-card-body>
-                            <mdb-card-title>
-                                <h3 class="h3-responsive">Fecha</h3>
-                                <p>Informale a los participantes cuándo empieza el evento para que puedan
-                                    organizarse.
-                                </p>
-                            </mdb-card-title>
+                    <!-- Date -->
+                    <div class="col-12 col-lg-6 mt-4">
+                        <mdb-card>
+                            <mdb-card-body>
+                                <mdb-card-title>
+                                    <h3 class="h3-responsive">Fecha</h3>
+                                    <p>Informale a los participantes cuándo empieza el evento para que puedan
+                                        organizarse.
+                                    </p>
+                                </mdb-card-title>
 
-                            <mat-form-field>
-                                <mat-label>Fecha</mat-label>
-                                <input matInput [matDatepicker]="picker">
-                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                <mat-datepicker #picker></mat-datepicker>
-                            </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>Fecha</mat-label>
+                                    <input formControlName="date" matInput [matDatepicker]="picker">
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
 
-                        </mdb-card-body>
-                    </mdb-card>
-                </div>
+                            </mdb-card-body>
+                        </mdb-card>
+                    </div>
 
-                <!-- Description -->
-                <div class="col-12 my-4">
-                    <mdb-card>
-                        <mdb-card-body>
-                            <mdb-card-title>
-                                <h3 class="h3-responsive">Descripción</h3>
-                                <p>
-                                    Agregá más información sobre el evento, como la agenda, nombrá a los sponsors o
-                                    invitados especiales.
-                                </p>
-                            </mdb-card-title>
+                    <!-- Description -->
+                    <div class="col-12 my-4">
+                        <mdb-card>
+                            <mdb-card-body>
+                                <mdb-card-title>
+                                    <h3 class="h3-responsive">Descripción</h3>
+                                    <p>
+                                        Agregá más información sobre el evento, como la agenda, nombrá a los sponsors o
+                                        invitados especiales.
+                                    </p>
+                                </mdb-card-title>
 
-                            <div class="md-form">
-                                <input formControlName="title" mdbInput type="text" id="titleId" class="form-control">
-                                <label for="titleId">Descripcion</label>
-                            </div>
+                                <div class="md-form">
+                                    <input formControlName="description" mdbInput type="text" id="descriptionId"
+                                        class="form-control">
+                                    <label for="descriptionId">Descripcion</label>
+                                </div>
 
-                            <div class="md-form">
-                                <textarea type="text" formControlName="description" id="descriptionID"
-                                    class="form-control md-textarea" mdbInput></textarea>
-                                <label for="descriptionID">Acerca de esta meetup</label>
-                            </div>
-                        </mdb-card-body>
-                    </mdb-card>
+                                <div class="md-form">
+                                    <textarea type="text" formControlName="aboutMeetup" id="aboutMeetupId"
+                                        class="form-control md-textarea" mdbInput></textarea>
+                                    <label for="aboutMeetupId">Acerca de esta meetup</label>
+                                </div>
+                            </mdb-card-body>
+                        </mdb-card>
+                    </div>
                 </div>
             </div>
-        </div>
 
 
-        <!-- ACTIONS DESKTOP -->
-        <div class="col-xl-8 text-right d-none d-lg-block mb-5">
-            <button mdbBtn type="button" color="deep-orange" class="font-weight-bold white-text" outline="true"
-                size="md" mdbWavesEffect>Cancelar</button>
-
-            <button size="md" mdbBtn type="submit" mdbWavesEffect
-                class="waves-light font-weight-bold deep-orange white-text">
-                Publicar
-            </button>
-        </div>
-
-        <!-- ACTIONS MOBILE -->
-        <footer class="page-footer font-small white fixed-bottom z-depth-top d-block d-lg-none">
-            <div class="text-center py-2">
+            <!-- ACTIONS DESKTOP -->
+            <div class="col-xl-8 text-right d-none d-lg-block mb-5">
                 <button mdbBtn type="button" color="deep-orange" class="font-weight-bold white-text" outline="true"
                     size="md" mdbWavesEffect>Cancelar</button>
-    
+
                 <button size="md" mdbBtn type="submit" mdbWavesEffect
                     class="waves-light font-weight-bold deep-orange white-text">
                     Publicar
                 </button>
             </div>
 
-        </footer>
+            <!-- ACTIONS MOBILE -->
+            <footer class="page-footer font-small white fixed-bottom z-depth-top d-block d-lg-none">
+                <div class="text-center py-2">
+                    <button mdbBtn type="button" color="deep-orange" class="font-weight-bold white-text" outline="true"
+                        size="md" mdbWavesEffect>Cancelar</button>
+
+                    <button size="md" mdbBtn type="submit" mdbWavesEffect
+                        class="waves-light font-weight-bold deep-orange white-text">
+                        Publicar
+                    </button>
+                </div>
+
+            </footer>
+        </div>
     </div>
-</div>
+
+</form>
