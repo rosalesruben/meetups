@@ -30,13 +30,34 @@ export class MeetupService {
   }
 
   findById(id: string): Observable<Meetup> {
-    // return of(this.meetups.find((meetup) => meetup.id === id));
-    return of();
+    return this.client.get(`${this.MEETUPS_ENDPOINT}/${id}`).pipe(
+      map((m: any) => {
+        return new Meetup(
+          m.title,
+          m.description,
+          m.aboutMeetup,
+          m.date,
+          m.organizer,
+          m.location,
+          m._id
+        );
+      })
+    );
   }
 
-  create(meetupForm: any): Observable<any> {
-    // const newMeetup: Meetup = meetupForm as Meetup;
-    // this.meetups.push(newMeetup);
-    return of('meetup added');
+  create(meetupForm: any): Observable<Meetup> {
+    return this.client.post(`${this.MEETUPS_ENDPOINT}`, meetupForm).pipe(
+      map((m: any) => {
+        return new Meetup(
+          m.title,
+          m.description,
+          m.aboutMeetup,
+          m.date,
+          m.organizer,
+          m.location,
+          m._id
+        );
+      })
+    );
   }
 }

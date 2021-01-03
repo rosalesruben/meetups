@@ -20,8 +20,9 @@ export class MeetupDetailComponent implements OnInit {
 
   ngOnInit(): void {
     let meetupID = this.activatedRoute.snapshot.paramMap.get('id');
-    this.meetupService
-      .findById(meetupID)
-      .subscribe((meetup) => (this.meetup = meetup));
+    this.meetupService.findById(meetupID).subscribe((meetup) => {
+      console.log(meetup);
+      this.meetup = meetup;
+    });
   }
 }
