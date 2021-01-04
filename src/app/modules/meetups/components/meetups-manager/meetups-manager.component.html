@@ -1,0 +1,94 @@
+<!-- TODO ver si podemos tener en 2 pasos, creacion del paquete y publicacion -->
+
+<div class="container-fluid" style="min-height: 600px;">
+    <div class="row justify-content-center no-gutters">
+        <!-- DESKTOP PUBLISH BUTON -->
+        <div class="col-xl-8 d-none d-md-block mt-5">
+            <h2 class="h2-responsive float-left">Meetups</h2>
+
+            <button routerLink="/meetups/nueva" mdbWavesEffect class="waves-light float-sm-right" size="md" mdbBtn
+                type="button" color="deep-orange">
+                Crear meetup
+            </button>
+        </div>
+
+        <!-- MOBILE PUBLISH BUTON-->
+        <div class="col-xl-8 d-block d-md-none mt-4">
+            <h2 class="h2-responsive float-left py-2">Meetups</h2>
+
+            <a class="float-right deep-orange" mdbBtn floating="true" size="lg" mdbWavesEffect
+                routerLink="/meetups/nueva">
+                <mdb-icon class="white-text" fas icon="plus"></mdb-icon>
+            </a>
+        </div>
+
+
+        <div class="col-xl-8 mt-4 mb-4">
+
+            <!--Table-->
+
+            <div class="table-responsive white" id="pageTop">
+
+                <table class="table" width="100%">
+
+                    <!--Table head-->
+                    <thead>
+                        <tr>
+                            <th scope="col" class="th-sm" style="width: 50%;">Meetup</th>
+                            <th scope="col" class="th-sm">Cervezas</th>
+                            <th scope="col" class="th-sm">Temp.</th>
+                            <!-- Published or not -->
+                            <th scope="col" class="th-sm">Estado</th>
+                            <th scope="col" class="th-sm"></th>
+
+                        </tr>
+                    </thead>
+                    <!--Table head-->
+
+                    <!--Table body-->
+                    <tbody>
+                        <tr *ngFor="let meetup of meetups | async">
+                            <td class="align-middle" style="width: 50%;">
+                                <div class="row" style="min-width: 300px;">
+                                    <div class="col-6 col-lg-2 py-2">
+                                        <img class="img-thumbnail" src="../../../../../assets/images/eventCover.jpeg"
+                                            alt="">
+                                    </div>
+                                    <div class="col-6 col-lg-10">
+                                        <span class="d-block font-weight-bold">{{meetup.title}}</span>
+                                        <small class="d-block">{{meetup.location}}</small>
+                                        <small class="d-block">{{meetup.date | date}}</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="align-middle">10</td>
+                            <td class="align-middle">47º</td>
+                            <td class="align-middle">Publicada</td>
+
+                            <!-- ACTIONS -->
+                            <td class="align-middle">
+
+
+                                <div class="btn-group mx-4" mdbDropdown>
+                                    <mdb-icon fas icon="ellipsis-v" mdbDropdownToggle class="waves-effect"
+                                        mdbWavesEffect></mdb-icon>
+                                    <div class="dropdown-menu dropdown-primary">
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                        <div class="divider dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Separated link</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                    <!--Table body-->
+                </table>
+                <!--Table-->
+
+            </div>
+        </div>
+    </div>
+</div>

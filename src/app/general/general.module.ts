@@ -5,9 +5,11 @@ import { CommonMDBBootstrapModule } from '../shared/common-mdbbootstrap.module';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
+import { LoginComponent } from './login/login.component';
+import { LoginModalComponent } from './login-modal/login-modal.component';
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent],
+  declarations: [HeaderComponent, FooterComponent, LoginComponent, LoginModalComponent],
   imports: [SharedModule, CommonMDBBootstrapModule, RouterModule],
   exports: [HeaderComponent, FooterComponent],
 })

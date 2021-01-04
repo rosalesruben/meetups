@@ -19,7 +19,7 @@ router.post('/login', (req, res, next) => {
                 res.send(err);
             }
             // generate a signed son web token with the contents of user object and return it in the response
-            const token = jwt.sign(user, 'fandomjuxo');
+            const token = jwt.sign(user, 'hackerRank');
             return res.json({ user, token });
         });
     })(req, res);

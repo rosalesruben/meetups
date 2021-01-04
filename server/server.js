@@ -1,23 +1,22 @@
-var express = require("express");
-var bodyParser = require("body-parser");
-var path = require("path");
-var mongoose = require("mongoose");
-var dataBaseConfig = require("./database/db");
+const express = require("express");
+const bodyParser = require("body-parser");
+const path = require("path");
+const mongoose = require("mongoose");
+const dataBaseConfig = require("./database/db");
 
 // ROUTES
-var MeetupsAPI = require("./api/meetupsAPI");
+const MeetupsAPI = require("./api/meetupsAPI");
+const UsersAPI = require("./api/users")
+const AuthAPI = require("./api/auth");
 
-
-var passport = require("passport");
+const passport = require("passport");
 
 // AUTH
 require("./passport-local");
-const auth = require("./api/auth");
 
 var app = express();
 // Ver si es necesario para Passport
 app.use(bodyParser.json());
-
 
 // Create link to Angular build directory
 var distDir = path.join(__dirname, "../dist/birras");
@@ -52,11 +51,9 @@ var server = app.listen(process.env.PORT || 8080, function () {
 //Routes
 
 app.use("/api/meetups", MeetupsAPI);
-//app.use("/auth", auth);
-
+app.use("/api/users", UsersAPI);
+app.use("/auth", AuthAPI);
 
 app.get("*", (req, res) => {
-  res.sendFile(
-    "/" + path.join(__dirname, "../dist/birras/index.html")
-  );
+  res.sendFile("/" + path.join(__dirname, "../dist/birras/index.html"));
 });

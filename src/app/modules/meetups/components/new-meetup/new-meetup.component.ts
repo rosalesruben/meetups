@@ -38,7 +38,7 @@ export class NewMeetupComponent implements OnInit {
     this.meetupService
       .create(this.newMeetupForm.value)
       .subscribe((meetup: Meetup) => {
-        this.router.navigate(['/meetups/' + meetup.id]);
+        this.router.navigate(['/meetups/gestionar']);
         this.openSnackBar('Meetup publicada correctamente!', 'descartar');
       });
   }

@@ -16,6 +16,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { MeetupsManagerComponent } from './components/meetups-manager/meetups-manager.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     MeetupDetailComponent,
     AttendEventComponent,
     NewMeetupComponent,
+    MeetupsManagerComponent,
   ],
   imports: [
     SharedModule,

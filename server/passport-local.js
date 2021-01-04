@@ -6,14 +6,6 @@ const passportJWT = require("passport-jwt");
 const JWTStrategy = passportJWT.Strategy;
 const ExtractJWT = passportJWT.ExtractJwt;
 
-const mockedAdmin = {
-  name: "cerimel",
-  lastname: "admin",
-  email: "rosalesruben@gmail.com",
-  username: "admin",
-  password: "Cerimel1!",
-  role: "ADMIN",
-};
 
 passport.use(
   new LocalStrategy(
@@ -24,11 +16,6 @@ passport.use(
     function (username, password, done) {
       username = username ? username.toLowerCase() : username;
 
-      if (username && username === "admin" && password === "Cerimel1!") {
-        return done(null, mockedAdmin, {
-          message: "Logged In Successfully with mocked admin",
-        });
-      }
 
       //this one is typically a DB call. Assume that the returned user object is pre-formatted and ready for storing in JWT
       return UserModel.findOne({ username, password })

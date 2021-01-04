@@ -29,19 +29,28 @@
                 </a>
             </li>
 
+            <!-- Login -->
+            <li class="nav-item" *ngIf="!isLogged">
+                <a class="nav-link waves-light" mdbWavesEffect (click)="openLoginModal()">
+                    <mdb-icon fas icon="user-circle" size="lg"></mdb-icon> Iniciar Sesión
+                </a>
+            </li>
 
-            <!-- Dropdown -->
-            <li class="nav-item dropdown" dropdown>
+            <!-- Logged user menu -->
+            <li class="nav-item dropdown" dropdown *ngIf="isLogged">
                 <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light"
                     mdbWavesEffect>
-                    <mdb-icon fas icon="user"></mdb-icon> rosalesruben@gmail.com<span class="caret"></span>
+                    <mdb-icon fas icon="user"></mdb-icon> {{currentUser.name}}<span class="caret"></span>
                 </a>
                 <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+                    <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/meetups/gestionar">Gestionar mis
+                        meetups</a>
+                    <div class="divider dropdown-divider"></div>
                     <a class="dropdown-item waves-light" mdbWavesEffect href="#">Eventos (1)</a>
                     <a class="dropdown-item waves-light" mdbWavesEffect href="#">Marcados "Me Gusta"</a>
                     <div class="divider dropdown-divider"></div>
                     <a class="dropdown-item waves-light" mdbWavesEffect href="#">Mi Cuenta</a>
-                    <a class="dropdown-item waves-light" mdbWavesEffect href="#">Salir</a>
+                    <a class="dropdown-item waves-light" mdbWavesEffect (click)="logout()">Salir</a>
                 </div>
             </li>
 
@@ -51,3 +60,24 @@
     <!-- Collapsible content -->
 
 </mdb-navbar>
+
+
+
+<!-- Login modal -->
+<div mdbModal #loginModal class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header" style="border-bottom: none;">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="loginModal.hide()">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <app-login></app-login>
+            </div>
+        </div>
+    </div>
+</div>
