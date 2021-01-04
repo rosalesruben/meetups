@@ -4,5 +4,6 @@
     </button>
 </div>
 <div class="modal-body">
-    <app-login (login)="login()"></app-login>
+    <app-login *ngIf="MODAL_MODE === 'LOGIN'" (login)="login()" (changeMode)="changeMode($event)"></app-login>
+    <app-register *ngIf="MODAL_MODE === 'REGISTER'" (register)="register()" (changeMode)="changeMode($event)"></app-register>
 </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth.service';
-import { IUser } from 'src/app/models/IUser';
+import { IUser, USER_ROLE } from 'src/app/models/IUser';
 import { Router } from '@angular/router';
 import { MDBModalService, MDBModalRef } from 'angular-bootstrap-md';
 import { LoginModalComponent } from '../login-modal/login-modal.component';
@@ -34,6 +34,10 @@ export class HeaderComponent implements OnInit {
     return this.authService.user;
   }
 
+  get userPermissions(): string[] {
+    return this.authService.userPermissions;
+  }
+
   logout() {
     this.authService.logout();
     this.router.navigate(['/']);
@@ -43,11 +47,13 @@ export class HeaderComponent implements OnInit {
     this.modalRef = this.modalService.show(LoginModalComponent);
 
     this.modalRef.content.action.subscribe((result: any) => {
-      console.log("Resultado del modal")
-      console.log(result);
-      if (result === "LOGGED") {
+      if (result === 'SIGN_IN' || result === 'SIGN_ON') {
         this.modalRef.hide();
       }
     });
+  }
+
+  hasPermission(permission: string): boolean {
+    return this.userPermissions.includes(permission);
   }
 }

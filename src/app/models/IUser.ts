@@ -1,5 +1,5 @@
 export enum USER_ROLE {
-  ATTENDER = 'ATTENDER',
+  USER = 'USER',
   ADMIN = 'ADMIN',
 }
 

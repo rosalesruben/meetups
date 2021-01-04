@@ -10,6 +10,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   @Output() login = new EventEmitter<any>();
+  @Output() changeMode = new EventEmitter<string>();
 
   constructor(
     private formBuilder: FormBuilder,
