@@ -26,6 +26,7 @@ export class NewMeetupComponent implements OnInit {
       date: '',
       organizer: '',
       location: '',
+      attenders: [[]]
     });
   }
 

@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var User = require("../model/User");
+var Meetup = require("../model/Meetup");
 
 /* TODO */
 router.post("/register", (req, res) => {
@@ -40,6 +41,33 @@ router.get("/:id", (req, res) => {
     }
   });
 });
+
+//User meetups attended
+router.get("/:id/meetups", (req, res) => {
+  const userID = req.params.id;
+  Meetup.find({attenders: userID}, (error, response) => {
+    if (error) {
+      console.log(error)
+    } else {
+      res.send(response);
+    }
+  });
+});
+
+//Is attending meetup
+// router.get("/:userID/meetup/:meetupID", (req, res) => {
+//   const userID = req.params.userID;
+//   const meetupID = req.params.meetupID;
+
+
+//   Meetup.find({attenders: userID}, (error, response) => {
+//     if (error) {
+//       console.log(error)
+//     } else {
+//       res.send(response);
+//     }
+//   });
+// });
 
 // Si o si tiene que venir el ID en el body sino mongo no lo puede actualizar
 router.patch("/:id", function (req, res) {

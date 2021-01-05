@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var User = require("../model/User");
-var Meetup = require("../model/Meetup")
+var Meetup = require("../model/Meetup");
 
 router.get("/", (req, res) => {
   Meetup.find((error, response) => {
@@ -24,13 +24,54 @@ router.post("/", (req, res) => {
   });
 });
 
-
 router.get("/:id", (req, res) => {
   Meetup.findById(req.params.id, (error, response) => {
     if (error) {
-      console.log(error)
+      console.log(error);
     } else {
       res.send(response);
+    }
+  });
+});
+
+//  ATTEND MEETUP
+// Validations
+// - Check meetup exists
+// - Check user is not already attending
+router.patch("/:id/attend", function (req, res) {
+  let attenderID = req.body.attenderId;
+  meetupID = req.params.id;
+
+  Meetup.findById(meetupID, (error, meetup) => {
+    if (error) {
+      return res.status(404).send({
+        errorCode: "MEETUP_NOT_FOUND",
+        errorMessage: "Meetup id " + meetupID + " not found.",
+      });
+    } else {
+      // Check if already user is attending meetup
+      if (meetup.attenders.includes(attenderID)) {
+        return res.status(404).send({
+          errorCode: "USER_ALREADY_ATTENDING",
+          errorMessage:
+            "User id " + attenderID + " is already attending meetup.",
+        });
+      } else {
+        meetup.attenders.push(attenderID);
+      }
+
+      Meetup.findByIdAndUpdate(
+        { _id: meetupID },
+        meetup,
+        { new: true },
+        (error, response) => {
+          if (!error) {
+            res.send(response);
+          } else {
+            console.log(error);
+          }
+        }
+      );
     }
   });
 });

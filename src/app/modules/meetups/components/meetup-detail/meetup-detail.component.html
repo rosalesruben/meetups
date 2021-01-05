@@ -35,7 +35,14 @@
                     <mdb-icon size="lg" far icon="heart" style="line-height:60px"></mdb-icon>
                 </div>
                 <div class="col-lg-4">
-                    <button class="w-100 deep-orange darken-1 white-text font-weight-bold" mdbBtn>Asistiré</button>
+                    <button *ngIf="!isLogged" (click)="openLoginModal()"
+                        class="w-100 deep-orange darken-1 white-text font-weight-bold" mdbBtn>Asistiré</button>
+
+                    <button *ngIf="isLogged && !alreadyAttending" (click)="attend()"
+                        class="w-100 deep-orange darken-1 white-text font-weight-bold" mdbBtn>Asistiré</button>
+
+                    <button *ngIf="isLogged && alreadyAttending"
+                        class="w-100 deep-orange darken-1 white-text font-weight-bold disabled" mdbBtn>Anotado</button>
                 </div>
             </div>
         </mdb-card>
@@ -141,5 +148,13 @@
     </div>
 
     <!-- Mobile Actions -->
-    <app-attend-event class="d-block d-lg-none"></app-attend-event>
+    <footer class="page-footer font-small white fixed-bottom z-depth-top d-block d-lg-none">
+        <div class="text-center py-3">
+            <button *ngIf="!alreadyAttending" (click)="attend()"
+                class="w-75 deep-orange darken-1 white-text font-weight-bold" mdbBtn>Asistiré</button>
+
+            <button *ngIf="alreadyAttending" class="w-100 deep-orange darken-1 white-text font-weight-bold disabled"
+                mdbBtn>Anotado</button>
+        </div>
+    </footer>
 </div>

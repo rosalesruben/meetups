@@ -37,10 +37,6 @@ export class AuthService {
     );
   }
 
-  public get isLogged(): boolean {
-    return localStorage.getItem('access_token') !== null;
-  }
-
   //TODO: esto deberia venir con el user
   public get userPermissions(): string[] {
     const ADMIN_PERMISSIONS = ['MANAGE_MEETUPS'];
@@ -52,6 +48,11 @@ export class AuthService {
     } else {
       return [];
     }
+  }
+
+  public get isLogged(): boolean {
+    const token = localStorage.getItem('access_token');
+    return !!token;
   }
 
   public get user(): IUser {

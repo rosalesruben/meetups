@@ -9,5 +9,5 @@ export interface IUser {
   username: string;
   password: string;
   role: USER_ROLE;
-  id?: string;
+  _id?: string;
 }

@@ -13,6 +13,10 @@ import { Subject } from 'rxjs';
 })
 export class HeaderComponent implements OnInit {
   modalRef: MDBModalRef;
+  modalConfig = {
+    backdrop: false,
+    ignoreBackdropClick: true,
+  };
 
   constructor(
     private authService: AuthService,
@@ -44,7 +48,10 @@ export class HeaderComponent implements OnInit {
   }
 
   openLoginModal() {
-    this.modalRef = this.modalService.show(LoginModalComponent);
+    this.modalRef = this.modalService.show(
+      LoginModalComponent,
+      this.modalConfig
+    );
 
     this.modalRef.content.action.subscribe((result: any) => {
       if (result === 'SIGN_IN' || result === 'SIGN_ON') {

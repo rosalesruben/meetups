@@ -22,6 +22,7 @@ export class MeetupService {
             m.date,
             m.organizer,
             m.location,
+            m.attenders,
             m._id
           );
         });
@@ -39,6 +40,7 @@ export class MeetupService {
           m.date,
           m.organizer,
           m.location,
+          m.attenders,
           m._id
         );
       })
@@ -55,9 +57,33 @@ export class MeetupService {
           m.date,
           m.organizer,
           m.location,
+          m.attenders,
           m._id
         );
       })
     );
+  }
+
+
+
+
+  // Attend meetup
+  attend(meetupID: string, userID: string): Observable<Meetup> {
+    return this.client
+      .patch(`${this.MEETUPS_ENDPOINT}/${meetupID}/attend`, { attenderId: userID })
+      .pipe(
+        map((m: any) => {
+          return new Meetup(
+            m.title,
+            m.description,
+            m.aboutMeetup,
+            m.date,
+            m.organizer,
+            m.location,
+            m.attenders,
+            m._id
+          );
+        })
+      );
   }
 }
