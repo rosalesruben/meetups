@@ -8,6 +8,8 @@ import { UsersService } from '../../services/users.service';
 import { IUser } from 'src/app/models/IUser';
 import { MDBModalRef, MDBModalService } from 'angular-bootstrap-md';
 import { LoginModalComponent } from 'src/app/general/login-modal/login-modal.component';
+import { WeatherService } from 'src/app/shared/services/weather.service';
+import { Weather, CurrentWeather } from 'src/app/models/CurrentWeather';
 
 @Component({
   selector: 'app-meetup-detail',
@@ -17,6 +19,7 @@ import { LoginModalComponent } from 'src/app/general/login-modal/login-modal.com
 export class MeetupDetailComponent implements OnInit {
   meetupId: string;
   meetup: Meetup;
+  currentWeather: CurrentWeather;
 
   modalRef: MDBModalRef;
   modalConfig = {
@@ -32,7 +35,8 @@ export class MeetupDetailComponent implements OnInit {
     private meetupService: MeetupService,
     private userService: UsersService,
     private authService: AuthService,
-    private modalService: MDBModalService
+    private modalService: MDBModalService,
+    private weatherService: WeatherService
   ) {}
 
   ngOnInit(): void {
@@ -43,6 +47,13 @@ export class MeetupDetailComponent implements OnInit {
     });
 
     this.getAttendingMeetups();
+
+    this.weatherService
+      .getCurrentWeather()
+      .subscribe((currentWeather: CurrentWeather) => {
+        this.currentWeather = currentWeather;
+        console.log(this.currentWeather);
+      });
   }
 
   // Get user attending meetups
@@ -75,7 +86,10 @@ export class MeetupDetailComponent implements OnInit {
   }
 
   get alreadyAttending(): boolean {
-    return this.userMeetupsAttending && !!this.userMeetupsAttending.find((m) => m.id === this.meetupId);
+    return (
+      this.userMeetupsAttending &&
+      !!this.userMeetupsAttending.find((m) => m.id === this.meetupId)
+    );
   }
 
   openLoginModal() {

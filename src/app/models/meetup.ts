@@ -16,7 +16,7 @@ export class Meetup {
     organizer: string,
     location: string,
     attenders: string[],
-    id?: string,
+    id?: string
   ) {
     this.title = title;
     this.description = description;
@@ -28,7 +28,16 @@ export class Meetup {
     this.id = id;
   }
 
-  getBoxOfBeers(): number {
-    return 9;
+  getBoxOfBeers(temperature: number): number {
+    let beersPerPerson;
+    if (temperature < 20) {
+      beersPerPerson = 0.75;
+    } else if (temperature >= 20 && temperature <= 24) {
+      beersPerPerson = 1;
+    } else {
+      beersPerPerson = 3;
+    }
+
+    return Math.ceil((beersPerPerson * this.attenders.length) / 6);
   }
 }

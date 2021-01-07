@@ -71,6 +71,13 @@
                         <p class="mb-0">{{meetup.location}}</p>
 
                     </div>
+
+                    <h6 class="mt-5 h6-responsive font-weight-bold">Temperatura</h6>
+                    <div *ngIf="currentWeather" class="ml-n3">
+                        <img src="http://openweathermap.org/img/w/{{currentWeather.weather[0].icon}}.png">
+                        <span>{{currentWeather.main.temp | number: '1.0-0'}}º C</span>
+                        <small class="ml-3">{{currentWeather.weather[0].description}}</small>
+                    </div>
                 </div>
             </div>
         </mdb-card>
@@ -103,7 +110,7 @@
                 <div class="col-12">
 
 
-                    <div class="row no-gutters">
+                    <div class="row mt-3 no-gutters">
                         <!-- Date and time -->
                         <div class="col-2 pt-1">
                             <mdb-icon size="lg" class="ml-1" far icon="calendar-alt"></mdb-icon>
@@ -111,13 +118,13 @@
                         <div class="col-10">
                             <h6 class="h6-responsive font-weight-bold">Fecha</h6>
                             <div>
-                                <p class="mb-0">{{meetup.date | date: 'd, MMMM d, y'}}</p>
+                                <p>{{meetup.date | date: 'd, MMMM d, y'}}</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- Location -->
-                    <div class="row mt-3 no-gutters">
+                    <div class="row mt-2 no-gutters">
                         <div class="col-2 pt-1">
                             <mdb-icon size="lg" class="ml-1" fas icon="map-marker-alt"></mdb-icon>
                         </div>
@@ -129,8 +136,25 @@
                         </div>
                     </div>
 
+                    <!-- Weather -->
+                    <div class="row mt-2 no-gutters">
+                        <div class="col-2 pt-1">
+                            <mdb-icon size="lg" class="ml-1" fas icon="thermometer-half"></mdb-icon>
+                        </div>
+                        <div class="col-10">
+                            <h6 class="h6-responsive font-weight-bold">Temperatura</h6>
+                            <div *ngIf="currentWeather" class="ml-n3">
+                                <p>
+                                    <img src="http://openweathermap.org/img/w/{{currentWeather.weather[0].icon}}.png">
+                                    <span>{{currentWeather.main.temp_max | number: '1.0-0'}}º C</span>
+                                    <small class="ml-3">{{currentWeather.weather[0].description}}</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Subtitle and description -->
-                    <div class="row mt-3 no-gutters">
+                    <div class="row mt-2 no-gutters">
                         <div class="col-2 pt-2">
                             <mdb-icon size="lg" class="ml-1" far icon="file-alt"></mdb-icon>
                         </div>

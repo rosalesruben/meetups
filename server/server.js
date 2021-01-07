@@ -8,6 +8,7 @@ const dataBaseConfig = require("./database/db");
 const MeetupsAPI = require("./api/meetupsAPI");
 const UsersAPI = require("./api/users")
 const AuthAPI = require("./api/auth");
+const WeatherAPI = require("./api/weatherAPI");
 
 const passport = require("passport");
 
@@ -52,6 +53,7 @@ var server = app.listen(process.env.PORT || 8080, function () {
 
 app.use("/api/meetups", MeetupsAPI);
 app.use("/api/users", UsersAPI);
+app.use("/api/weather", WeatherAPI);
 app.use("/auth", AuthAPI);
 
 app.get("*", (req, res) => {

@@ -1,0 +1,40 @@
+<div class="modal-header">
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h4 class="modal-title w-100" id="myModalLabel">Aprovisionamiento</h4>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-12 col-lg-6 py-2">
+            <img class="img-thumbnail" style="width: 350px" src="../../../../../assets/images/eventCover.jpeg" alt="">
+        </div>
+        <div class="col-12 col-lg-6">
+            <span class="d-block font-weight-bold">{{meetup.title}}</span>
+            <small class="d-block">{{meetup.location}}</small>
+            <small class="d-block">{{meetup.date | date}}</small>
+            <small class="d-block"><span class="font-weight-bold">{{meetup.attenders.length}}</span> personas
+                anotadas.</small>
+
+            <p *ngIf="currentWeather" class="ml-n3">
+                <img src="http://openweathermap.org/img/w/{{currentWeather.weather[0].icon}}.png">
+                <span>{{currentWeather.main.temp | number: '1.0-0'}}º C</span>
+                <small class="ml-3">{{currentWeather.weather[0].description}}</small>
+            </p>
+
+            <div *ngIf="loading" class="d-flex justify-content-center">
+                <div class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="currentWeather" class="col-12">
+            <h5 class="h5-reponsive deep-orange-text">Se necesitan <span
+                    class="font-weight-bold">{{meetup.getBoxOfBeers(currentWeather.main.temp)}}</span> cajas de
+                cervezas.</h5>
+        </div>
+
+    </div>
+
+</div>

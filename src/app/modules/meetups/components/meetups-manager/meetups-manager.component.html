@@ -35,11 +35,10 @@
                     <thead>
                         <tr>
                             <th scope="col" class="th-sm" style="width: 50%;">Meetup</th>
-                            <th scope="col" class="th-sm">Cervezas</th>
-                            <th scope="col" class="th-sm">Temp.</th>
+                            <th scope="col" class="th-sm">Anotados</th>
                             <!-- Published or not -->
-                            <th scope="col" class="th-sm">Estado</th>
-                            <th scope="col" class="th-sm"></th>
+                            <!-- <th scope="col" class="th-sm">Estado</th> -->
+                            <th scope="col" class="th-sm">Cervezas</th>
 
                         </tr>
                     </thead>
@@ -61,15 +60,18 @@
                                     </div>
                                 </div>
                             </td>
-                            <td class="align-middle">10</td>
-                            <td class="align-middle">47º</td>
-                            <td class="align-middle">Publicada</td>
+                            <td class="align-middle">
+                                <span *ngIf="meetup.attenders.length > 0">{{meetup.attenders.length}}</span>
+                                <span *ngIf="meetup.attenders.length == 0">Ninguno</span>
+                            </td>
+
+                            <!-- <td class="align-middle">Publicada</td> -->
 
                             <!-- ACTIONS -->
                             <td class="align-middle">
-
-
-                                <div class="btn-group mx-4" mdbDropdown>
+                                <mdb-icon (click)="openBeersProvisioning(meetup)" fas icon="beer" size="lg" class="waves-effect" mdbWavesEffect
+                                    mdbTooltip="Calcular cajas de cervezas" placement="top"></mdb-icon>
+                                <!-- <div class="btn-group mx-4" mdbDropdown>
                                     <mdb-icon fas icon="ellipsis-v" mdbDropdownToggle class="waves-effect"
                                         mdbWavesEffect></mdb-icon>
                                     <div class="dropdown-menu dropdown-primary">
@@ -79,7 +81,7 @@
                                         <div class="divider dropdown-divider"></div>
                                         <a class="dropdown-item" href="#">Separated link</a>
                                     </div>
-                                </div>
+                                </div> -->
                             </td>
                         </tr>
 

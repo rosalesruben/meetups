@@ -12,15 +12,15 @@ import { AuthService } from './auth.service';
 })
 export class AuthGuardService implements CanActivate {
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    let allowedRoles = next.data.allowedRoles;
+    let permissionNeeded = next.data.permission;
     if (
       this.authService.isLogged &&
-      this.authService.isAuthorized(allowedRoles)
+      this.authService.isAuthorized(permissionNeeded)
     ) {
       return true;
     }
 
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
     return false;
   }
 
