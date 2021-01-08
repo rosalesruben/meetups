@@ -3,42 +3,7 @@ var router = express.Router();
 var User = require("../model/User");
 var Meetup = require("../model/Meetup");
 
-/**
- * @swagger
- *
- * /api/users:
- *   get:
- *     consumes:
- *       - application/json
- *     produces:
- *       - application/json
- *     parameters: []
- *     response:
- *      "200":
- *       description: "successfull operation"
- *       schema:
- *        %ref: '#/definitions/User'
- * definitions:
- *  User:
- *   type: "object"
- *   properties:
- *    _id:
- *     type: "string"
- *    name:
- *     type: "string"
- *    lastname:
- *     type: "string"
- *    username:
- *     type: "string"
- *    password:
- *     type: "string"
- *    role:
- *     type: "string"
- *    __v:
- *     type: "integer"
- *   xml:
- *    name: "User"
- */
+
 router.get("/", (req, res) => {
   Meetup.find((error, response) => {
     if (error) {
@@ -48,6 +13,8 @@ router.get("/", (req, res) => {
     }
   });
 });
+
+
 
 router.post("/", (req, res) => {
   let meetup = new Meetup(req.body);
@@ -59,6 +26,7 @@ router.post("/", (req, res) => {
     }
   });
 });
+
 
 router.get("/:id", (req, res) => {
   Meetup.findById(req.params.id, (error, response) => {
