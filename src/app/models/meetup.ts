@@ -7,6 +7,7 @@ export class Meetup {
   organizer: string;
   location: string;
   attenders: string[];
+  registered: string[];
 
   constructor(
     title: string,
@@ -16,6 +17,7 @@ export class Meetup {
     organizer: string,
     location: string,
     attenders: string[],
+    registered: string[],
     id?: string
   ) {
     this.title = title;
@@ -25,6 +27,7 @@ export class Meetup {
     this.organizer = organizer;
     this.location = location;
     this.attenders = attenders;
+    this.registered = registered;
     this.id = id;
   }
 

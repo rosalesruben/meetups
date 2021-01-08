@@ -76,6 +76,48 @@ router.patch("/:id/attend", function (req, res) {
   });
 });
 
+//  CHECK-IN MEETUP
+// Validations
+// - Check meetup exists
+// - Check user is not already registered
+router.patch("/:id/check-in", function (req, res) {
+  let attenderID = req.body.attenderId;
+  meetupID = req.params.id;
+
+  Meetup.findById(meetupID, (error, meetup) => {
+    if (error) {
+      return res.status(404).send({
+        errorCode: "MEETUP_NOT_FOUND",
+        errorMessage: "Meetup id " + meetupID + " not found.",
+      });
+    } else {
+      // Check if already user is registered in the meetup
+      if (meetup.registered.includes(attenderID)) {
+        return res.status(404).send({
+          errorCode: "USER_ALREADY_REGISTERED",
+          errorMessage:
+            "User id " + attenderID + " is already registered in the meetup.",
+        });
+      } else {
+        meetup.registered.push(attenderID);
+      }
+
+      Meetup.findByIdAndUpdate(
+        { _id: meetupID },
+        meetup,
+        { new: true },
+        (error, response) => {
+          if (!error) {
+            res.send(response);
+          } else {
+            console.log(error);
+          }
+        }
+      );
+    }
+  });
+});
+
 // Si o si tiene que venir el ID en el body sino mongo no lo puede actualizar
 router.patch("/:id", function (req, res) {
   let meetup = new Meetup(req.body);

@@ -23,6 +23,7 @@ export class MeetupService {
             m.organizer,
             m.location,
             m.attenders,
+            m.registered,
             m._id
           );
         });
@@ -41,6 +42,7 @@ export class MeetupService {
           m.organizer,
           m.location,
           m.attenders,
+          m.registered,
           m._id
         );
       })
@@ -58,19 +60,19 @@ export class MeetupService {
           m.organizer,
           m.location,
           m.attenders,
+          m.registered,
           m._id
         );
       })
     );
   }
 
-
-
-
   // Attend meetup
   attend(meetupID: string, userID: string): Observable<Meetup> {
     return this.client
-      .patch(`${this.MEETUPS_ENDPOINT}/${meetupID}/attend`, { attenderId: userID })
+      .patch(`${this.MEETUPS_ENDPOINT}/${meetupID}/attend`, {
+        attenderId: userID,
+      })
       .pipe(
         map((m: any) => {
           return new Meetup(
@@ -81,6 +83,30 @@ export class MeetupService {
             m.organizer,
             m.location,
             m.attenders,
+            m.registered,
+            m._id
+          );
+        })
+      );
+  }
+
+  // Check-in
+  checkIn(meetupID: string, userID: string): Observable<Meetup> {
+    return this.client
+      .patch(`${this.MEETUPS_ENDPOINT}/${meetupID}/check-in`, {
+        attenderId: userID,
+      })
+      .pipe(
+        map((m: any) => {
+          return new Meetup(
+            m.title,
+            m.description,
+            m.aboutMeetup,
+            m.date,
+            m.organizer,
+            m.location,
+            m.attenders,
+            m.registered,
             m._id
           );
         })

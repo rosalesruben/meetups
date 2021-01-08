@@ -11,6 +11,7 @@ let MeetupSchema = new Schema({
   location: String,
   //Attenders users IDs
   attenders: [String],
+  registered: [String],
 });
 
 module.exports = mongoose.model("Meetups", MeetupSchema);

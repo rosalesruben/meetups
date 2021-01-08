@@ -35,14 +35,29 @@
                     <mdb-icon size="lg" far icon="heart" style="line-height:60px"></mdb-icon>
                 </div>
                 <div class="col-lg-4">
-                    <button *ngIf="!isLogged" (click)="openLoginModal()"
-                        class="w-100 deep-orange darken-1 white-text font-weight-bold" mdbBtn>Asistiré</button>
+                    <button *ngIf="canCheckin" (click)="checkIn()"
+                        class="w-75 deep-orange darken-1 white-text font-weight-bold" mdbBtn>Check-In</button>
 
-                    <button *ngIf="isLogged && !alreadyAttending" (click)="attend()"
-                        class="w-100 deep-orange darken-1 white-text font-weight-bold" mdbBtn>Asistiré</button>
+                    <button *ngIf="showChecked" class="w-100 deep-orange darken-1 white-text font-weight-bold disabled"
+                        mdbBtn>Asististe</button>
 
-                    <button *ngIf="isLogged && alreadyAttending"
+                    <!-- Attend logged user -->
+                    <button *ngIf="isLogged && canAttend" (click)="attend()"
+                        class="w-75 deep-orange darken-1 white-text font-weight-bold" mdbBtn>Asistiré</button>
+
+                    <!-- Attend not logged user -->
+                    <button *ngIf="!isLogged && canAttend" (click)="openLoginModal()"
+                        class="w-75 deep-orange darken-1 white-text font-weight-bold" mdbBtn>Asistiré</button>
+
+                    <button *ngIf="showAttending"
                         class="w-100 deep-orange darken-1 white-text font-weight-bold disabled" mdbBtn>Anotado</button>
+
+                    <button *ngIf="hasNotAttended"
+                        class="w-100 deep-orange darken-1 white-text font-weight-bold disabled" mdbBtn>No
+                        asististe</button>
+
+                    <button *ngIf="expiredMeetup"
+                        class="w-100 deep-orange darken-1 white-text font-weight-bold disabled" mdbBtn>Expirada</button>
                 </div>
             </div>
         </mdb-card>
@@ -118,7 +133,7 @@
                         <div class="col-10">
                             <h6 class="h6-responsive font-weight-bold">Fecha</h6>
                             <div>
-                                <p>{{meetup.date | date: 'd, MMMM d, y'}}</p>
+                                <p>{{meetup.date | date: 'dd/MM/yyyy'}}</p>
                             </div>
                         </div>
                     </div>
@@ -174,11 +189,29 @@
     <!-- Mobile Actions -->
     <footer class="page-footer font-small white fixed-bottom z-depth-top d-block d-lg-none">
         <div class="text-center py-3">
-            <button *ngIf="!alreadyAttending" (click)="attend()"
+            <button *ngIf="canCheckin" (click)="checkIn()" class="w-75 deep-orange darken-1 white-text font-weight-bold"
+                mdbBtn>Check-In</button>
+
+            <button *ngIf="showChecked" class="w-100 deep-orange darken-1 white-text font-weight-bold disabled"
+                mdbBtn>Asististe</button>
+
+            <!-- Attend logged user -->
+            <button *ngIf="isLogged && canAttend" (click)="attend()"
                 class="w-75 deep-orange darken-1 white-text font-weight-bold" mdbBtn>Asistiré</button>
 
-            <button *ngIf="alreadyAttending" class="w-100 deep-orange darken-1 white-text font-weight-bold disabled"
+            <!-- Attend not logged user -->
+            <button *ngIf="!isLogged && canAttend" (click)="openLoginModal()"
+                class="w-75 deep-orange darken-1 white-text font-weight-bold" mdbBtn>Asistiré</button>
+
+            <button *ngIf="showAttending" class="w-100 deep-orange darken-1 white-text font-weight-bold disabled"
                 mdbBtn>Anotado</button>
+
+            <button *ngIf="hasNotAttended" class="w-100 deep-orange darken-1 white-text font-weight-bold disabled"
+                mdbBtn>No
+                asististe</button>
+
+            <button *ngIf="expiredMeetup" class="w-100 deep-orange darken-1 white-text font-weight-bold disabled"
+                mdbBtn>Expirada</button>
         </div>
     </footer>
 </div>

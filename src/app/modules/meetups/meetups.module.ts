@@ -17,6 +17,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MeetupsManagerComponent } from './components/meetups-manager/meetups-manager.component';
 import { BeersProvisioningComponent } from './components/beers-provisioning/beers-provisioning.component';
+import { MyMeetupsComponent } from './components/my-meetups/my-meetups.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { BeersProvisioningComponent } from './components/beers-provisioning/beer
     NewMeetupComponent,
     MeetupsManagerComponent,
     BeersProvisioningComponent,
+    MyMeetupsComponent,
   ],
   imports: [
     SharedModule,

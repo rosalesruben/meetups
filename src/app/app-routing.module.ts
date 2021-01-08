@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { MyMeetupsComponent } from './modules/meetups/components/my-meetups/my-meetups.component';
 
 const routes: Routes = [
   {
@@ -7,7 +8,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/meetups/meetups.module').then((m) => m.MeetupsModule),
   },
-  { path: '', redirectTo: 'meetups', pathMatch: 'full' }
+  {
+    path: 'entradas',
+    component: MyMeetupsComponent,
+  },
+  { path: '', redirectTo: 'meetups', pathMatch: 'full' },
 ];
 
 @NgModule({
