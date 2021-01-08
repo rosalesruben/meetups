@@ -15,30 +15,31 @@
         <ul class="navbar-nav ml-auto">
             <li class="nav-item active" *ngIf="hasPermission('MANAGE_MEETUPS')">
                 <a class="nav-link waves-light" mdbWavesEffect routerLink="/meetups/nueva">
-                    <mdb-icon fas icon="plus"></mdb-icon> Crear<span class="sr-only">(current)</span>
+                    <mdb-icon fas icon="plus"></mdb-icon> {{ "Crear" | translate }} <span
+                        class="sr-only">(current)</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link waves-light" mdbWavesEffect routerLink="/">
-                    <mdb-icon fas icon="ticket-alt"></mdb-icon> Descubrir meetups
+                <a class="nav-link waves-light" mdbWavesEffect routerLink="/" translate>
+                    <mdb-icon fas icon="ticket-alt"></mdb-icon> MEETUP.DISCOVER
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link waves-light" mdbWavesEffect>
-                    <mdb-icon fas icon="heart"></mdb-icon> Favoritos
+                <a class="nav-link waves-light" mdbWavesEffect translate>
+                    <mdb-icon fas icon="heart"></mdb-icon> LABELS.FAVORITES
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link waves-light" mdbWavesEffect routerLink="/entradas">
-                    <mdb-icon fas icon="ticket-alt"></mdb-icon> Entradas
+                <a class="nav-link waves-light" mdbWavesEffect routerLink="/entradas" translate>
+                    <mdb-icon fas icon="ticket-alt"></mdb-icon> LABELS.TICKETS
                 </a>
             </li>
 
             <!-- Login -->
             <li class="nav-item" *ngIf="!isLogged">
-                <a class="nav-link waves-light" mdbWavesEffect (click)="openLoginModal()">
-                    <mdb-icon fas icon="user-circle" size="lg"></mdb-icon> Iniciar Sesión
+                <a class="nav-link waves-light" mdbWavesEffect (click)="openLoginModal()" translate>
+                    <mdb-icon fas icon="user-circle" size="lg"></mdb-icon> LABELS.SIGN_IN
                 </a>
             </li>
 
@@ -50,12 +51,12 @@
                 </a>
                 <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
                     <a *ngIf="hasPermission('MANAGE_MEETUPS')" class="dropdown-item waves-light" mdbWavesEffect
-                        routerLink="/meetups/gestionar">Gestionar meetups</a>
+                        routerLink="/meetups/gestionar" translate>MEETUP.MANAGE</a>
                     <div *ngIf="hasPermission('MANAGE_MEETUPS')" class="divider dropdown-divider"></div>
-                    <a class="dropdown-item waves-light" mdbWavesEffect href="#">Marcados "Me Gusta"</a>
+                    <a class="dropdown-item waves-light" mdbWavesEffect translate>LABELS.MARKED_AS_FAVORITES</a>
                     <div class="divider dropdown-divider"></div>
-                    <a class="dropdown-item waves-light" mdbWavesEffect href="#">Mi Cuenta</a>
-                    <a class="dropdown-item waves-light" mdbWavesEffect (click)="logout()">Salir</a>
+                    <a class="dropdown-item waves-light" mdbWavesEffect translate>LABELS.MY_ACCOUNT</a>
+                    <a class="dropdown-item waves-light" mdbWavesEffect (click)="logout()" translate>LABELS.LOGOUT</a>
                 </div>
             </li>
 

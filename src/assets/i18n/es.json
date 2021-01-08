@@ -1,0 +1,35 @@
+{
+  "LABELS": {
+    "TICKETS": "Entradas",
+    "OUR_MEETUPS": "Nuestras meetups",
+    "MEETUPS": "Meetups",
+    "MEETUP": "Meetup",
+    "CREATE": "Crear",
+    "FAVORITES": "Favoritos",
+    "SIGN_IN": "Iniciar Sesión",
+    "MARKED_AS_FAVORITES": "Marcados 'Me Gusta'",
+    "MY_ACCOUNT": "Mi Cuenta",
+    "LOGOUT": "Salir",
+    "CHECK_IN": "Check-in",
+    "ATTEND": "Asistir",
+    "ATTENDING": "Anotado",
+    "ATTENDED": "Asististe",
+    "HAS_NOT_ATTENDED": "No asististe",
+    "EXPIRED": "Expirada",
+    "DATE": "Fecha",
+    "LOCATION": "Ubicación",
+    "TEMPERATURE": "Temperatura",
+    "REGISTERED": "Anotados",
+    "BEERS": "Cervezas"
+  },
+
+  "LOGIN": {},
+
+  "MEETUP": {
+    "DISCOVER": "Descubrir meetups",
+    "MANAGE": "Gestionar meetups",
+    "NEW": "Nueva meetup"
+  },
+
+  "HELLO": "Hola gato con nombre {{value}}"
+}

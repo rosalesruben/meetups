@@ -4,17 +4,17 @@
     <div class="row justify-content-center no-gutters">
         <!-- DESKTOP PUBLISH BUTON -->
         <div class="col-xl-8 d-none d-md-block mt-5">
-            <h2 class="h2-responsive float-left">Meetups</h2>
+            <h2 class="h2-responsive float-left" translate>LABELS.MEETUPS</h2>
 
             <button routerLink="/meetups/nueva" mdbWavesEffect class="waves-light float-sm-right" size="md" mdbBtn
-                type="button" color="deep-orange">
-                Crear meetup
+                type="button" color="deep-orange" translate>
+                MEETUP.NEW
             </button>
         </div>
 
         <!-- MOBILE PUBLISH BUTON-->
         <div class="col-xl-8 d-block d-md-none mt-4">
-            <h2 class="h2-responsive float-left py-2">Meetups</h2>
+            <h2 class="h2-responsive float-left py-2" translate>LABELS.MEETUPS</h2>
 
             <a class="float-right deep-orange" mdbBtn floating="true" size="lg" mdbWavesEffect
                 routerLink="/meetups/nueva">
@@ -34,11 +34,11 @@
                     <!--Table head-->
                     <thead>
                         <tr>
-                            <th scope="col" class="th-sm" style="width: 50%;">Meetup</th>
-                            <th scope="col" class="th-sm">Anotados</th>
+                            <th scope="col" class="th-sm" style="width: 50%;" translate>LABELS.MEETUP</th>
+                            <th scope="col" class="th-sm" translate translate>LABELS.REGISTERED</th>
                             <!-- Published or not -->
                             <!-- <th scope="col" class="th-sm">Estado</th> -->
-                            <th scope="col" class="th-sm">Cervezas</th>
+                            <th scope="col" class="th-sm" translate>LABELS.BEERS</th>
 
                         </tr>
                     </thead>

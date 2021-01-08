@@ -31,6 +31,12 @@ The project uses this technologies:
 - Run `npm run start:client` for a dev server.
 - Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+## Users
+- To create new users for attend meetups, just sign up with login and then switch to register.
+
+## Admins
+- To create admin users just change user role ("role" field) from "USER" to "ADMIN" in user collection.
+
 ## Running unit tests (ToDo)
 
 - Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
