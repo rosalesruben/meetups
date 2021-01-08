@@ -25,11 +25,11 @@
                 </a>
             </li>
 
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link waves-light" mdbWavesEffect translate>
                     <mdb-icon fas icon="heart"></mdb-icon> LABELS.FAVORITES
                 </a>
-            </li>
+            </li> -->
             <li class="nav-item">
                 <a class="nav-link waves-light" mdbWavesEffect routerLink="/entradas" translate>
                     <mdb-icon fas icon="ticket-alt"></mdb-icon> LABELS.TICKETS
@@ -53,8 +53,8 @@
                     <a *ngIf="hasPermission('MANAGE_MEETUPS')" class="dropdown-item waves-light" mdbWavesEffect
                         routerLink="/meetups/gestionar" translate>MEETUP.MANAGE</a>
                     <div *ngIf="hasPermission('MANAGE_MEETUPS')" class="divider dropdown-divider"></div>
-                    <a class="dropdown-item waves-light" mdbWavesEffect translate>LABELS.MARKED_AS_FAVORITES</a>
-                    <div class="divider dropdown-divider"></div>
+                    <!-- <a class="dropdown-item waves-light" mdbWavesEffect translate>LABELS.MARKED_AS_FAVORITES</a> -->
+                    <!-- <div class="divider dropdown-divider"></div> -->
                     <a class="dropdown-item waves-light" mdbWavesEffect translate>LABELS.MY_ACCOUNT</a>
                     <a class="dropdown-item waves-light" mdbWavesEffect (click)="logout()" translate>LABELS.LOGOUT</a>
                 </div>

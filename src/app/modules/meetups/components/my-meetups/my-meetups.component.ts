@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Meetup } from 'src/app/models/meetup';
 import { MeetupService } from '../../services/meetup.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-my-meetups',
@@ -14,7 +15,13 @@ export class MyMeetupsComponent implements OnInit {
   constructor(private meetupService: MeetupService) {}
 
   ngOnInit(): void {
-    this.meetups = this.meetupService.findAll();
-    this.meetups.subscribe((response) => console.log(response));
+    //Get meetups and order asc by date
+    this.meetups = this.meetupService.findAll().pipe(
+      map((meetups: Meetup[]) => {
+        return meetups.sort((a, b) =>
+          a.date > b.date ? 1 : b.date > a.date ? -1 : 0
+        );
+      })
+    );
   }
 }
