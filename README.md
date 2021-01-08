@@ -1,34 +1,40 @@
 # Birras
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
+## Framework
 
-## Backlog
--Como admin quiero armar una meetup para poder invitar otras personas.
--Como usuario quiero inscribirme en una meetup para poder asistir.
--Como usuario quiero hacer check-in en una meetup para poder avisar que estuve ahi.
--Como usuario y admin quiero poder recibir notificaciones para estar al tanto de las meetups.
+The project uses this technologies:
 
+- Angular 11
+- Nodejs 12
+- MongoDB 4
+- Express 4
+- Passport (for local authentication)
+- @auth0/angular-jwt (for manage JWT)
+- Bootstrap Material 10
+- Angular Material 11
 
-## Development server
+## Install dependencies
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Run `npm install` to install project dependencies.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+- Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+## Run app (needed for PWA)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Run `npm run start:server` to run server.
+- Navigate to `http://localhost:8080`. The app will automatically reload if you change any of the source files.
 
-## Running end-to-end tests
+## Development server (optional for development)
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+- Run `npm run start:client` for a dev server.
+- Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Further help
+## Running unit tests (ToDo)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Contact
+
+- [Rosales Ruben](rosalesruben@gmail.com)
