@@ -5,17 +5,41 @@ const mongoose = require("mongoose");
 const dataBaseConfig = require("./database/db");
 
 // ROUTES
-const MeetupsAPI = require("./api/meetupsAPI");
-const UsersAPI = require("./api/users")
-const AuthAPI = require("./api/auth");
-const WeatherAPI = require("./api/weatherAPI");
+const MeetupsAPI = require("./api/api_meetups");
+const UsersAPI = require("./api/api_users");
+const AuthAPI = require("./api/api_auth");
+const WeatherAPI = require("./api/api_weather");
 
+var morgan = require("morgan");
 const passport = require("passport");
+
+//SWAGGER
+const swaggerUi = require("swagger-ui-express");
+// const swaggerDocument = require("./swagger.json");
+
+const swaggerJSDoc = require("swagger-jsdoc");
+
+const swaggerOptions = {
+  swaggerDefinition: {
+    openapi: "3.0.0",
+    info: {
+      title: "Birras!",
+      version: "1.0.0",
+    },
+  },
+  apis: ["./server/api/api*.js"],
+};
 
 // AUTH
 require("./passport-local");
 
 var app = express();
+// Used to logg API request
+// app.use(morgan("combined"));
+morgan.token('body', (req, res) => JSON.stringify(req.body));
+app.use(morgan(':method :url :status :response-time ms - :res[content-length] :body - :req[content-length]'));
+
+
 // Ver si es necesario para Passport
 app.use(bodyParser.json());
 
@@ -54,6 +78,15 @@ var server = app.listen(process.env.PORT || 8080, function () {
 app.use("/api/meetups", MeetupsAPI);
 app.use("/api/users", UsersAPI);
 app.use("/api/weather", WeatherAPI);
+
+//Swagger
+// router.use('/api-docs', swaggerUi.serve);
+// router.get('/api-docs', swaggerUi.setup(swaggerDocument));
+
+// Initialize swagger-jsdoc -> returns validated swagger spec in json format
+const swaggerSpec = swaggerJSDoc(swaggerOptions);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 app.use("/auth", AuthAPI);
 
 app.get("*", (req, res) => {
