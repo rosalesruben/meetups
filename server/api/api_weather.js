@@ -5,6 +5,24 @@ var request = require("request");
 const API_WEATHER_ENDPOINT =
   "https://community-open-weather-map.p.rapidapi.com";
 
+
+
+  /**
+ * @swagger
+ *
+ * /api/weather/current:
+ *   get:
+ *     consumes:
+ *       - application/json
+ *     produces:
+ *       - application/json
+ *     parameters: []
+ *     responses:
+ *      "200":
+ *       description: "successfull operation"
+ *       schema:
+ *        type: object
+ */
 router.get("/current", function (req, res) {
   request({
     uri: `${API_WEATHER_ENDPOINT}/weather?q=Ringuelet,AR&lang=sp&units=metric`,

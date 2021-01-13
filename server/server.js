@@ -25,7 +25,23 @@ const swaggerOptions = {
     info: {
       title: "Birras!",
       version: "1.0.0",
+      description:
+        "This is a REST API application made with Express. It retrieves data from JSONPlaceholder.",
+      license: {
+        name: "Licensed Under MIT",
+        url: "https://spdx.org/licenses/MIT.html",
+      },
+      contact: {
+        name: "JSONPlaceholder",
+        url: "https://jsonplaceholder.typicode.com",
+      },
     },
+    servers: [
+      {
+        url: "http://localhost:8080",
+        description: "Development server",
+      },
+    ],
   },
   apis: ["./server/api/api*.js"],
 };
@@ -36,9 +52,12 @@ require("./passport-local");
 var app = express();
 // Used to logg API request
 // app.use(morgan("combined"));
-morgan.token('body', (req, res) => JSON.stringify(req.body));
-app.use(morgan(':method :url :status :response-time ms - :res[content-length] :body - :req[content-length]'));
-
+morgan.token("body", (req, res) => JSON.stringify(req.body));
+app.use(
+  morgan(
+    ":method :url :status :response-time ms - :res[content-length] :body - :req[content-length]"
+  )
+);
 
 // Ver si es necesario para Passport
 app.use(bodyParser.json());
@@ -85,7 +104,7 @@ app.use("/api/weather", WeatherAPI);
 
 // Initialize swagger-jsdoc -> returns validated swagger spec in json format
 const swaggerSpec = swaggerJSDoc(swaggerOptions);
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use("/auth", AuthAPI);
 

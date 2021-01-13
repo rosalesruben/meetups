@@ -15,7 +15,7 @@
 
                     <div class="p-3">
 
-                        <h5 class="h5-responsive my-3">{{meetup.date | date: 'MMM dd'}}</h5>
+                        <h5 class="h5-responsive my-3">{{meetup.date | date: 'MMM dd': 'UTC'}}</h5>
                         <h4 class="h4-responsive my-3 font-weight-bold">{{meetup.title}}</h4>
 
                         <p class="grey-text mb-0">
@@ -84,7 +84,7 @@
                     <!-- <span>{{ 'HELLO' | translate : "{value: 'Perris!'}" }}</span> -->
                     <h6 class="h6-responsive font-weight-bold" translate>LABELS.DATE</h6>
                     <div>
-                        <p class="mb-0">{{meetup.date | date}}</p>
+                        <p class="mb-0">{{meetup.date | date: 'longDate': 'UTC'}}</p>
                     </div>
 
                     <h6 class="mt-5 h6-responsive font-weight-bold" translate>LABELS.LOCATION</h6>
@@ -139,7 +139,7 @@
                         <div class="col-10">
                             <h6 class="h6-responsive font-weight-bold" translate>LABELS.DATE</h6>
                             <div>
-                                <p>{{meetup.date | date}}</p>
+                                <p>{{meetup.date | date: 'mediumDate': 'UTC'}}</p>
                             </div>
                         </div>
                     </div>

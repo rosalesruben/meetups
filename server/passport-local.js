@@ -38,7 +38,7 @@ passport.use(
   new JWTStrategy(
     {
       jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
-      secretOrKey: "fandomjuxo",
+      secretOrKey: "hackerrank",
     },
     function (jwtPayload, cb) {
       //find the user in db if needed

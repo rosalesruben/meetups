@@ -10,7 +10,7 @@
     <!--Card content-->
     <mdb-card-body>
 
-        <span class="deep-orange-text">{{meetup.date | date}}</span>
+        <span class="deep-orange-text">{{meetup.date | date: 'mediumDate': 'utc'}}</span>
         <!--Title-->
         <mdb-card-title>
             <h5 class="h5-responsive font-weight-bold">{{meetup.title}}</h5>
