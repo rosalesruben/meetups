@@ -41,7 +41,7 @@ The project uses this technologies:
 ## Admins
 - To create admin users just change user role ("role" field) from "USER" to "ADMIN" in user collection.
 
-## Swagger endpoints (ToDO complete endpoitns)
+## Swagger endpoints
 - To see swagger docs navigate to `http://localhost:8080/api-docs/`.
 
 ## Running unit tests (ToDo)
