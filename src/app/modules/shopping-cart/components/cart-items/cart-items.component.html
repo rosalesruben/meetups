@@ -1,0 +1,20 @@
+<table mdbTable responsive="true">
+    <thead class="indigo lighten-4">
+        <tr>
+            <th scope="col">Cant.</th>
+            <th scope="col">Codigo</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">$ Unit.</th>
+            <th scope="col">$ Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr mdbTableCol *ngFor="let el of elements">
+            <th >{{el.id}}</th>
+            <td>{{el.heading1}}</td>
+            <td>{{el.heading2}}</td>
+            <td>{{el.heading3}}</td>
+            <td>{{el.heading4}}</td>
+        </tr>
+    </tbody>
+</table>

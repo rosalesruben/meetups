@@ -20,7 +20,8 @@
     "LOCATION": "Ubicación",
     "TEMPERATURE": "Temperatura",
     "REGISTERED": "Anotados",
-    "BEERS": "Cervezas"
+    "BEERS": "Cervezas",
+    "PRODUCTS": "Productos"
   },
 
   "LOGIN": {},

@@ -13,10 +13,13 @@ const routes: Routes = [
     component: MyMeetupsComponent,
   },
   { path: '', redirectTo: 'meetups', pathMatch: 'full' },
+  
+  { path: 'ventas', loadChildren: () => import('./modules/sales/sales.module').then(m => m.SalesModule) },
+  { path: 'carrito', loadChildren: () => import('./modules/shopping-cart/shopping-cart.module').then(m => m.ShoppingCartModule) },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

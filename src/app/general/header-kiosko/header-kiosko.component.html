@@ -1,0 +1,79 @@
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark indigo" [containerInside]="false">
+
+    <!-- Navbar brand -->
+    <mdb-navbar-brand>
+        <a class="navbar-brand font-weight-bold text-white" routerLink="/meetups">
+            <!-- <img src="../../../assets/images/logoSantander2.png" height="30" class="d-inline-block align-top" alt=""> -->
+            Almacen Virshi
+        </a>
+    </mdb-navbar-brand>
+
+    <!-- Collapsible content -->
+    <links>
+
+        <!-- Links -->
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active" *ngIf="hasPermission('MANAGE_MEETUPS')">
+                <a class="nav-link waves-light" mdbWavesEffect routerLink="/meetups/nueva">
+                    <mdb-icon fas icon="plus"></mdb-icon> {{ "Crear" | translate }} <span
+                        class="sr-only">(current)</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link waves-light" mdbWavesEffect routerLink="/entradas" translate>
+                    <mdb-icon far icon="list-alt"></mdb-icon> LABELS.PRODUCTS
+                </a>
+            </li>
+
+            <!-- Login -->
+            <li class="nav-item" *ngIf="!isLogged">
+                <a class="nav-link waves-light" mdbWavesEffect (click)="openLoginModal()" translate>
+                    <mdb-icon fas icon="user-circle" size="lg"></mdb-icon> LABELS.SIGN_IN
+                </a>
+            </li>
+
+            <!-- Logged user menu -->
+            <li class="nav-item dropdown" dropdown *ngIf="isLogged">
+                <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light"
+                    mdbWavesEffect>
+                    <mdb-icon fas icon="user"></mdb-icon> {{currentUser.name}}<span class="caret"></span>
+                </a>
+                <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+                    <a *ngIf="hasPermission('MANAGE_MEETUPS')" class="dropdown-item waves-light" mdbWavesEffect
+                        routerLink="/meetups/gestionar" translate>MEETUP.MANAGE</a>
+                    <div *ngIf="hasPermission('MANAGE_MEETUPS')" class="divider dropdown-divider"></div>
+                    <!-- <a class="dropdown-item waves-light" mdbWavesEffect translate>LABELS.MARKED_AS_FAVORITES</a> -->
+                    <!-- <div class="divider dropdown-divider"></div> -->
+                    <a class="dropdown-item waves-light" mdbWavesEffect translate>LABELS.MY_ACCOUNT</a>
+                    <a class="dropdown-item waves-light" mdbWavesEffect (click)="logout()" translate>LABELS.LOGOUT</a>
+                </div>
+            </li>
+
+        </ul>
+        <!-- Links -->
+    </links>
+    <!-- Collapsible content -->
+
+</mdb-navbar>
+
+
+
+<!-- Login modal -->
+<div mdbModal #loginModal class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header" style="border-bottom: none;">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="loginModal.hide()">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <app-login></app-login>
+            </div>
+        </div>
+    </div>
+</div>
